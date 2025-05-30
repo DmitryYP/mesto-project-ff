@@ -16,6 +16,7 @@ function addCard(newCard, deleteCard){
   const cardDelete = cardElement.querySelector('.card__delete-button');
   cardElement.querySelector('.card__title').textContent = newCard.name;
   cardElement.querySelector('.card__image').src = newCard.link;
+  cardElement.querySelector('.card__image').alt = newCard.name;
   cardDelete.addEventListener('click', () => {
     deleteCard(cardElement);
   });
