@@ -1,5 +1,5 @@
+const cardTemplate = document.querySelector('#card-template').content;
 function createCard(newCard, callbacks) {
-  const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
   cardElement.querySelector('.card__title').textContent = newCard.name; // Данные карточки
   const cardImages = cardElement.querySelector('.card__image'); // Изображение
@@ -22,4 +22,13 @@ function createCard(newCard, callbacks) {
   
   return cardElement;
 }
-export {createCard};
+
+function handleRemoveCard(cardElement) {  // Функция удаления
+  cardElement.remove();
+}
+
+function handleLikeButton(likeButton) {  // Функция лайка
+  likeButton.classList.toggle('card__like-button_is-active');
+}
+
+export {createCard, handleRemoveCard, handleLikeButton};
