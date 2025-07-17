@@ -1,2 +1,2 @@
 # Проектная работа Mesto
-https://github.com/DmitryYP/mesto-project-ff.git
+https://DmitryYP.github.io/mesto-project-ff
