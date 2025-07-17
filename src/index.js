@@ -8,7 +8,7 @@
 
 // @todo: Вывести карточки на страницу
 import './pages/index.css';
-import { createCard, handleRemoveCard, handleLikeButton, renderLikes} from './components/card.js';
+import { createCard, handleRemoveCard, handleLikeButton } from './components/card.js';
 import { openModal, closeModal, handleListener } from './components/modal.js';
 import { clearValidation, enableValidation } from './scripts/validation.js';
 import { getInitialCards, getProfile, editProfile, addNewCard, deleteNewCard, editAvatar, likeCardCount } from './scripts/api.js';

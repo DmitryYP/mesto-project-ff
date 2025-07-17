@@ -25,8 +25,7 @@ function createCard(newCard, {handleRemoveCard, handleLikeButton, handleOpenImag
   }
 
  if (handleLikeButton) {
-  likeButton.addEventListener('click', () => {
-    // Передаем все необходимые параметры
+  likeButton.addEventListener('click', () => {  // Слушатель на кнопку лайка
     handleLikeButton(newCard, likeButton, likesCount);
   });
 }

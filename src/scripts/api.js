@@ -30,7 +30,7 @@ const getProfile = () => {
        return res.json();
      }
 
-     return Promise.reject(`Ошибка: ${res.status}`);    // если ошибка, отклоняем промис
+     return Promise.reject(`Ошибка: ${res.status}`);
    })
 };
 
@@ -45,7 +45,7 @@ const editProfile = (name, about) => {
        return res.json();
      }
 
-     return Promise.reject(`Ошибка: ${res.status}`);    // если ошибка, отклоняем промис
+     return Promise.reject(`Ошибка: ${res.status}`);
    })
 }
 
@@ -60,7 +60,7 @@ const addNewCard = (name, link) => {
        return res.json();
      }
 
-     return Promise.reject(`Ошибка: ${res.status}`);    // если ошибка, отклоняем промис
+     return Promise.reject(`Ошибка: ${res.status}`);
    })
 }
 
@@ -74,7 +74,7 @@ const deleteNewCard = (cardID) => {
        return res.json();
      }
 
-     return Promise.reject(`Ошибка: ${res.status}`);    // если ошибка, отклоняем промис
+     return Promise.reject(`Ошибка: ${res.status}`);
    })
 }
 
@@ -89,7 +89,7 @@ const editAvatar = (avatar) => {
        return res.json();
      }
 
-     return Promise.reject(`Ошибка: ${res.status}`);    // если ошибка, отклоняем промис
+     return Promise.reject(`Ошибка: ${res.status}`);
    })
 }
 
@@ -103,7 +103,7 @@ const likeCardCount = (cardID, like) => {
        return res.json();
      }
 
-     return Promise.reject(`Ошибка: ${res.status}`);    // если ошибка, отклоняем промис
+     return Promise.reject(`Ошибка: ${res.status}`);
    })
 }
 
