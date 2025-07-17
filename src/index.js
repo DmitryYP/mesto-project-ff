@@ -8,7 +8,6 @@
 
 // @todo: Вывести карточки на страницу
 import './pages/index.css';
-// import { initialCards } from './scripts/cards.js';
 import { createCard, handleRemoveCard, handleLikeButton, renderLikes} from './components/card.js';
 import { openModal, closeModal, handleListener } from './components/modal.js';
 import { clearValidation, enableValidation } from './scripts/validation.js';
@@ -158,12 +157,6 @@ profileAvatar.addEventListener('click', () =>{
   openModal(popupAvatar);
   clearValidation(formAvatar, validationConfig);
 });
-
-//initialCards.forEach(item => { // Отображение карточек на экране
-//  const card = createCard(item, callbacks);
-//  cardList.append(card);
-//});
-
 
 Promise.all([getInitialCards(), getProfile()])
   .then(([cards, userData]) => {
