@@ -1,4 +1,14 @@
 // Функция очистки валидации + неактивная кнопка
+const disableButton = (buttonElement, validationConfig) => {   // Функция деактивации кнопки
+  buttonElement.disabled = true;
+  buttonElement.classList.add(validationConfig.inactiveButtonClass);
+};
+
+const enableButton = (buttonElement, validationConfig) => {   // Функция активации кнопки
+  buttonElement.disabled = false;
+  buttonElement.classList.remove(validationConfig.inactiveButtonClass);
+};
+
 function clearValidation(formElement, validationConfig) {
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
   inputList.forEach((inputElement) => {
@@ -6,8 +16,7 @@ function clearValidation(formElement, validationConfig) {
   });
 
   const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
-  buttonElement.disabled = true;
-  buttonElement.classList.add(validationConfig.inactiveButtonClass);
+  disableButton(buttonElement, validationConfig);
 }
 
 // Функция добавления класса ошибки
@@ -28,10 +37,8 @@ const hideInputError = (formElement, inputElement, validationConfig) => {
 
 // Функция проверки валидности
 const checkInputValidity = (formElement, inputElement, validationConfig) => {
-  if (inputElement.value.trim() === '') {    // Добавляем кастомное сообщение для пустого поля, согласно макету
-    inputElement.setCustomValidity('Вы пропустили это поле');
-  } else if (inputElement.validity.patternMismatch) {
-    inputElement.setCustomValidity(inputElement.dataset.errorMessage);
+  if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(inputElement.dataset.errorMessage);  // проверка на соответствие данных pattern
   } else {
     inputElement.setCustomValidity('');
   }
@@ -50,11 +57,9 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement, validationConfig) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.disabled = true;
-    buttonElement.classList.add(validationConfig.inactiveButtonClass);
+    disableButton(buttonElement, validationConfig);
   } else {
-    buttonElement.disabled = false;
-    buttonElement.classList.remove(validationConfig.inactiveButtonClass)
+    enableButton(buttonElement, validationConfig);
   }
 };
 

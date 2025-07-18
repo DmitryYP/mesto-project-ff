@@ -44,13 +44,6 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
-const config = {
-  baseUrl: 'https://nomoreparties.co/v1/wff-cohort-42',
-  headers: {
-    authorization: '0e37d1fc-ba09-49cc-aed6-0aac9e7bf040',
-    'Content-Type': 'application/json'
-  }
-}
 let userId = null;
 
 enableValidation(validationConfig);
@@ -146,6 +139,7 @@ buttonOpenPopupProfile.addEventListener('click', () =>{
 formAddNewCard.addEventListener('submit', handleAddCardSubmit); // Добавление новой карточки в начало списка
 
 buttonOpenPopupAddNewCard.addEventListener('click', () =>{
+  formAddNewCard.reset();   // Чистая форма при открытии попапа добавления карточки
   openModal(popupAddNewCard);
   submitButton.textContent = 'Создать';
   clearValidation(formAddNewCard, validationConfig);

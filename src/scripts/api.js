@@ -4,20 +4,21 @@ const config = {
     authorization: '0e37d1fc-ba09-49cc-aed6-0aac9e7bf040',
     'Content-Type': 'application/json'
   }
-}   // УБРАТЬ КАТЧИ
+}
+
+const getResponseData = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+};
 
 const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     method: 'GET',
     headers: config.headers
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);       // если ошибка, отклоняем промис
-    })
+    .then(getResponseData);
 };
 
 const getProfile = () => {
@@ -25,13 +26,7 @@ const getProfile = () => {
     method: 'GET',
     headers: config.headers
   })
-   .then(res => {
-     if (res.ok) {
-       return res.json();
-     }
-
-     return Promise.reject(`Ошибка: ${res.status}`);
-   })
+   .then(getResponseData);
 };
 
 const editProfile = (name, about) => {
@@ -40,13 +35,7 @@ const editProfile = (name, about) => {
     headers: config.headers,
     body: JSON.stringify({ name, about })
   }) 
-  .then(res => {
-     if (res.ok) {
-       return res.json();
-     }
-
-     return Promise.reject(`Ошибка: ${res.status}`);
-   })
+  .then(getResponseData);
 }
 
 const addNewCard = (name, link) => {
@@ -55,13 +44,7 @@ const addNewCard = (name, link) => {
     headers: config.headers,
     body: JSON.stringify({ name, link })
   }) 
-  .then(res => {
-     if (res.ok) {
-       return res.json();
-     }
-
-     return Promise.reject(`Ошибка: ${res.status}`);
-   })
+  .then(getResponseData);
 }
 
 const deleteNewCard = (cardID) => {
@@ -69,13 +52,7 @@ const deleteNewCard = (cardID) => {
     method: 'DELETE',
     headers: config.headers,
   })
-  .then(res => {
-     if (res.ok) {
-       return res.json();
-     }
-
-     return Promise.reject(`Ошибка: ${res.status}`);
-   })
+  .then(getResponseData);
 }
 
 const editAvatar = (avatar) => {
@@ -84,13 +61,7 @@ const editAvatar = (avatar) => {
     headers: config.headers,
     body: JSON.stringify({ avatar })
   })
-  .then(res => {
-     if (res.ok) {
-       return res.json();
-     }
-
-     return Promise.reject(`Ошибка: ${res.status}`);
-   })
+  .then(getResponseData);
 }
 
 const likeCardCount = (cardID, like) => {
@@ -98,13 +69,7 @@ const likeCardCount = (cardID, like) => {
     method: like ? 'PUT' : 'DELETE',
     headers: config.headers,
   })
-  .then(res => {
-     if (res.ok) {
-       return res.json();
-     }
-
-     return Promise.reject(`Ошибка: ${res.status}`);
-   })
+  .then(getResponseData);
 }
 
 export { getInitialCards, getProfile, editProfile, addNewCard, deleteNewCard, editAvatar, likeCardCount }
